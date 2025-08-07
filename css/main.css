@@ -124,7 +124,7 @@ a:hover, a:focus {
     font-size: var(--font-size-base);
     text-align: center;
     cursor: pointer;
-    transition: all var(--transition-base);
+    transition: all var(--transition-slow);
     border-radius: 0;
 }
 
@@ -163,7 +163,7 @@ a:hover, a:focus {
     background-color: transparent;
     z-index: 1000;
     border-bottom: none;
-    transition: all var(--transition-base);
+    transition: all var(--transition-slow);
 }
 
 .header__container {
@@ -239,11 +239,16 @@ a:hover, a:focus {
     background-color: white;
     box-shadow: 1px 1px 2px rgba(0,0,0,0.6);
     margin: 2px 0;
-    transition: all var(--transition-base);
+    transition: all var(--transition-slow);
 }
 
 .menu-toggle[aria-expanded="true"] .menu-toggle__line {
     opacity: 0;
+    transition-delay: 0s;
+}
+
+.menu-toggle[aria-expanded="false"] .menu-toggle__line {
+    transition-delay: 0.1s;
 }
 
 .menu-toggle:hover .menu-toggle__line {
@@ -262,7 +267,7 @@ a:hover, a:focus {
     justify-content: center;
     opacity: 0;
     visibility: hidden;
-    transition: opacity var(--transition-base);
+    transition: opacity var(--transition-slow), visibility var(--transition-slow);
 }
 
 .nav--mobile.is-open {
@@ -355,7 +360,7 @@ body.nav-open {
     justify-content: center;
     border-radius: 50%;
     opacity: 0;
-    transition: opacity var(--transition-base);
+    transition: opacity var(--transition-slow) 0.1s;
     z-index: 10000;
 }
 
