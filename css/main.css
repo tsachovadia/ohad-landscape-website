@@ -254,6 +254,10 @@ a:hover, a:focus {
     transform: rotate(-45deg) translate(6px, -6px);
 }
 
+.menu-toggle:hover .menu-toggle__line {
+    background-color: var(--color-accent);
+}
+
 .nav--mobile {
     /* Simple fixed positioning - dimensions set by JavaScript */
     position: fixed;
@@ -266,7 +270,7 @@ a:hover, a:focus {
     justify-content: center;
     opacity: 0;
     visibility: hidden;
-    /* No animations - instant show/hide */
+    transition: opacity var(--transition-base);
 }
 
 .nav--mobile.is-open {
