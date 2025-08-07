@@ -23,11 +23,20 @@
         function closeMobileMenu() {
             menuToggle.setAttribute('aria-expanded', 'false');
             mobileNav.classList.remove('is-open');
+            document.body.classList.remove('nav-open');
+            // Reset viewport on iOS
+            if (window.scrollY !== undefined) {
+                window.scrollTo(0, parseInt(document.body.dataset.scrollTop || 0));
+            }
         }
         
         function openMobileMenu() {
+            // Store scroll position for iOS
+            document.body.dataset.scrollTop = window.scrollY || document.documentElement.scrollTop || 0;
+            
             menuToggle.setAttribute('aria-expanded', 'true');
             mobileNav.classList.add('is-open');
+            document.body.classList.add('nav-open');
         }
         
         menuToggle.addEventListener('click', function() {
