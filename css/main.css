@@ -242,16 +242,8 @@ a:hover, a:focus {
     transition: all var(--transition-base);
 }
 
-.menu-toggle[aria-expanded="true"] .menu-toggle__line:nth-child(1) {
-    transform: rotate(45deg) translate(6px, 6px);
-}
-
-.menu-toggle[aria-expanded="true"] .menu-toggle__line:nth-child(2) {
+.menu-toggle[aria-expanded="true"] .menu-toggle__line {
     opacity: 0;
-}
-
-.menu-toggle[aria-expanded="true"] .menu-toggle__line:nth-child(3) {
-    transform: rotate(-45deg) translate(6px, -6px);
 }
 
 .menu-toggle:hover .menu-toggle__line {
@@ -354,16 +346,21 @@ body.nav-open {
     background: none;
     border: none;
     color: var(--color-primary);
-    font-size: 2.5rem;
+    font-size: 1.5rem;
     cursor: pointer;
-    width: 44px;
-    height: 44px;
+    width: 32px;
+    height: 32px;
     display: flex;
     align-items: center;
     justify-content: center;
     border-radius: 50%;
-    /* No animations on X button */
+    opacity: 0;
+    transition: opacity var(--transition-base);
     z-index: 10000;
+}
+
+.nav--mobile.is-open .nav__close {
+    opacity: 1;
 }
 
 .nav__close:hover,
