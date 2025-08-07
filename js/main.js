@@ -20,23 +20,30 @@
     function initMobileMenu() {
         if (!menuToggle || !mobileNav) return;
         
+        let scrollPosition = 0;
+        
         function closeMobileMenu() {
             menuToggle.setAttribute('aria-expanded', 'false');
             mobileNav.classList.remove('is-open');
             document.body.classList.remove('nav-open');
-            // Reset viewport on iOS
-            if (window.scrollY !== undefined) {
-                window.scrollTo(0, parseInt(document.body.dataset.scrollTop || 0));
-            }
+            
+            // Restore scroll position on iOS
+            document.body.style.position = '';
+            document.body.style.top = '';
+            window.scrollTo(0, scrollPosition);
         }
         
         function openMobileMenu() {
-            // Store scroll position for iOS
-            document.body.dataset.scrollTop = window.scrollY || document.documentElement.scrollTop || 0;
+            // Store current scroll position
+            scrollPosition = window.pageYOffset || document.documentElement.scrollTop;
             
             menuToggle.setAttribute('aria-expanded', 'true');
             mobileNav.classList.add('is-open');
             document.body.classList.add('nav-open');
+            
+            // Fix position for iOS
+            document.body.style.position = 'fixed';
+            document.body.style.top = `-${scrollPosition}px`;
         }
         
         menuToggle.addEventListener('click', function() {
