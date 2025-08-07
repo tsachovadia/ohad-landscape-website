@@ -31,10 +31,19 @@ Portfolio website for landscape architecture professional - Hebrew RTL, mobile-f
 - **Hebrew RTL**: Full right-to-left language support
 - **Accessibility**: WCAG compliant, keyboard navigation
 
+## 🔗 Repository
+**GitHub**: https://github.com/tsachovadia/ohad-landscape-website.git  
+**Live Site**: https://ohadhaim.co.il
+
 ## 🚀 Deployment
 Every push to `master` branch automatically deploys to production via Vercel.
 
-**Live Site**: https://ohadhaim.co.il
+### Clone & Setup
+```bash
+git clone https://github.com/tsachovadia/ohad-landscape-website.git
+cd ohad-landscape-website
+# Open index.html in browser for local development
+```
 
 ---
 **Framework**: None (Vanilla)  

@@ -20,6 +20,12 @@
 4. **Ask user to push: `git push origin master`**
 5. Ask user to check live site and give feedback
 
+### 📥 Clone Instructions for New Agents:
+```bash
+git clone https://github.com/tsachovadia/ohad-landscape-website.git
+cd ohad-landscape-website
+```
+
 ---
 
 ## 🎯 הנחיות עבודה לסוכנים
@@ -35,6 +41,7 @@
 - **Frontend:** HTML5 + CSS Grid/Flexbox + Vanilla JavaScript
 - **Responsive:** Mobile-first (320px → 768px → 1024px → 1440px+)
 - **Language:** Hebrew RTL support
+- **Repository:** GitHub - https://github.com/tsachovadia/ohad-landscape-website.git
 - **Deployment:** Vercel auto-deploy from master branch
 - **Domain:** ohadhaim.co.il
 
