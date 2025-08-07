@@ -90,6 +90,116 @@
     }
     
     /**
+     * Hero Slideshow Functionality
+     */
+    function initHeroSlideshow() {
+        const slides = document.querySelectorAll('.slide');
+        const indicators = document.querySelectorAll('.indicator');
+        const scrollIndicator = document.querySelector('.scroll-indicator');
+        
+        if (!slides.length || !indicators.length) return;
+        
+        let currentSlide = 0;
+        let slideInterval;
+        
+        // טען תמונות רקע לכל slide
+        slides.forEach(slide => {
+            const bgUrl = slide.dataset.bg;
+            if (bgUrl) {
+                slide.style.backgroundImage = `url(${bgUrl})`;
+            }
+        });
+        
+        // מעבר לתמונה הבאה
+        function nextSlide() {
+            slides[currentSlide].classList.remove('active');
+            indicators[currentSlide].classList.remove('active');
+            
+            currentSlide = (currentSlide + 1) % slides.length;
+            
+            slides[currentSlide].classList.add('active');
+            indicators[currentSlide].classList.add('active');
+        }
+        
+        // מעבר לתמונה ספציפית
+        function goToSlide(slideIndex) {
+            if (slideIndex === currentSlide) return;
+            
+            slides[currentSlide].classList.remove('active');
+            indicators[currentSlide].classList.remove('active');
+            
+            currentSlide = slideIndex;
+            
+            slides[currentSlide].classList.add('active');
+            indicators[currentSlide].classList.add('active');
+            
+            // איפוס הטיימר
+            resetSlideTimer();
+        }
+        
+        // התחלת טיימר אוטומטי
+        function startSlideTimer() {
+            slideInterval = setInterval(nextSlide, 6000); // 6 שניות
+        }
+        
+        // איפוס טיימר
+        function resetSlideTimer() {
+            clearInterval(slideInterval);
+            startSlideTimer();
+        }
+        
+        // מאזין לקליקים על אינדיקטורים
+        indicators.forEach((indicator, index) => {
+            indicator.addEventListener('click', () => {
+                goToSlide(index);
+            });
+        });
+        
+        // מאזין לקליק על חץ הגלילה
+        if (scrollIndicator) {
+            scrollIndicator.addEventListener('click', () => {
+                const projectsSection = document.querySelector('#projects');
+                if (projectsSection) {
+                    const headerHeight = document.querySelector('.header').offsetHeight;
+                    const targetPosition = projectsSection.offsetTop - headerHeight - 20;
+                    
+                    window.scrollTo({
+                        top: targetPosition,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        }
+        
+        // מאזין להשהיה כשעוברים עם העכבר על הslideshow
+        const slideshowContainer = document.querySelector('.slideshow-container');
+        if (slideshowContainer) {
+            slideshowContainer.addEventListener('mouseenter', () => {
+                clearInterval(slideInterval);
+            });
+            
+            slideshowContainer.addEventListener('mouseleave', () => {
+                startSlideTimer();
+            });
+        }
+        
+        // התחלת הטיימר האוטומטי
+        startSlideTimer();
+        
+        // נגישות - מאזין למקלדת
+        indicators.forEach((indicator, index) => {
+            indicator.addEventListener('keydown', (e) => {
+                if (e.key === 'Enter' || e.key === ' ') {
+                    e.preventDefault();
+                    goToSlide(index);
+                }
+            });
+        });
+        
+        console.log('✨ Slideshow initialized with', slides.length, 'slides');
+    }
+    
+    /**
      * Video Player Enhancement
      */
     function initVideoPlayer() {
@@ -278,6 +388,7 @@
         // Core functionality
         initMobileMenu();
         initSmoothScrolling();
+        initHeroSlideshow();
         initVideoPlayer();
         initProjectCards();
         initHeaderScroll();
