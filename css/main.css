@@ -288,25 +288,16 @@ body.nav-open {
     touch-action: none;
 }
 
-.nav__content {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    width: 100%;
-    height: 100%;
-    gap: var(--space-xl);
-    transform: translateY(-18%);
-}
-
 .nav__brand {
-    text-align: center;
-    margin-bottom: var(--space-md);
+    position: absolute;
+    top: var(--space-lg);
+    right: var(--space-lg);
+    text-align: right;
+    z-index: 10000;
 }
 
 .nav__brand-name {
-    font-size: var(--font-size-3xl);
+    font-size: var(--font-size-lg);
     font-weight: 300;
     letter-spacing: 0.05em;
     margin: 0;
@@ -314,10 +305,10 @@ body.nav-open {
 }
 
 .nav__brand-tagline {
-    font-size: var(--font-size-base);
+    font-size: var(--font-size-small);
     font-weight: 300;
     letter-spacing: 0.03em;
-    margin: var(--space-xs) 0 0 0;
+    margin: 2px 0 0 0;
     color: var(--color-secondary);
     opacity: 0.8;
 }
@@ -333,6 +324,8 @@ body.nav-open {
     margin: 0;
     padding: 0;
     width: 100%;
+    height: 100%;
+    transform: translateY(-18%);
 }
 
 .nav--mobile .nav__link {
