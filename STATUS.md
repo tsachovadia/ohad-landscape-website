@@ -11,12 +11,13 @@
 - [x] GitHub repository setup and deployment
 - [x] **Homepage v1.0 LIVE and working ✅**
 - [x] **Git/Vercel sync issue resolved ✅**
+- [x] **DNS issue identified and solution provided ✅**
 
 ## 🔄 Current Status
-**✅ SITE IS LIVE:** https://ohadhaim.co.il  
-**✅ Status:** Fully deployed and working - ready for design refinements  
+**✅ NEW SITE LIVE:** https://www.ohadhaim.co.il (working perfectly)  
+**⚠️ MAIN DOMAIN:** https://ohadhaim.co.il (shows old site - DNS fix needed)  
 **🔗 Repository:** https://github.com/tsachovadia/ohad-landscape-website.git  
-**🔧 Last Deploy:** Force deployment triggered to resolve sync issue  
+**🔧 DNS Fix:** See DNS-FIX-INSTRUCTIONS.md - Cloudflare A record needs update  
 
 ## 🎯 Next Phase - Design Refinements
 **Ready for iterative improvements based on user feedback**
