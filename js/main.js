@@ -27,11 +27,10 @@
             mobileNav.classList.remove('is-open');
             document.body.classList.remove('nav-open');
             
-            // Re-enable scrolling by removing styles
+            // Clear all positioning
+            mobileNav.style.height = '';
+            mobileNav.style.top = '';
             document.body.style.overflow = '';
-            document.body.style.position = '';
-            document.body.style.top = '';
-            document.body.style.width = '';
         }
         
         function openMobileMenu() {
@@ -39,10 +38,20 @@
             mobileNav.classList.add('is-open');
             document.body.classList.add('nav-open');
             
-            // Prevent scrolling WITHOUT moving the viewport
+            // Get ACTUAL viewport dimensions at this moment
+            const viewportHeight = window.innerHeight;
+            const viewportWidth = window.innerWidth;
+            
+            // Set menu to exact viewport size using JavaScript
+            mobileNav.style.height = viewportHeight + 'px';
+            mobileNav.style.width = viewportWidth + 'px';
+            mobileNav.style.top = '0px';
+            mobileNav.style.left = '0px';
+            
+            // Prevent scrolling
             document.body.style.overflow = 'hidden';
-            document.body.style.position = 'relative';
-            document.body.style.width = '100%';
+            
+            console.log('Menu opened - Viewport:', viewportWidth + 'x' + viewportHeight);
         }
         
         menuToggle.addEventListener('click', function() {

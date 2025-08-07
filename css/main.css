@@ -255,11 +255,8 @@ a:hover, a:focus {
 }
 
 .nav--mobile {
+    /* Simple fixed positioning - dimensions set by JavaScript */
     position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
     background-color: rgba(255, 255, 255, 0.6);
     backdrop-filter: blur(10px);
     -webkit-backdrop-filter: blur(10px);
@@ -269,13 +266,7 @@ a:hover, a:focus {
     justify-content: center;
     opacity: 0;
     visibility: hidden;
-    transition: all var(--transition-base);
-    /* iOS Safari fixes */
-    -webkit-overflow-scrolling: touch;
-    overscroll-behavior: none;
-    /* Force full viewport height on mobile */
-    min-height: 100vh;
-    min-height: -webkit-fill-available;
+    transition: opacity var(--transition-base), visibility var(--transition-base);
 }
 
 .nav--mobile.is-open {
@@ -291,46 +282,15 @@ body.nav-open {
     right: 0;
 }
 
-/* iOS specific fixes */
-@supports (-webkit-touch-callout: none) {
-    .nav--mobile {
-        /* Position relative to actual viewport, not body */
-        position: fixed !important;
-        top: 0 !important;
-        left: 0 !important;
-        right: 0 !important;
-        bottom: 0 !important;
-        height: 100vh !important;
-        height: -webkit-fill-available !important;
-        width: 100vw !important;
-        display: flex !important;
-        align-items: center !important;
-        justify-content: center !important;
-        z-index: 9999 !important;
-    }
-    
-    .nav--mobile .nav__list {
-        /* Center the list within the fixed overlay */
-        display: flex !important;
-        flex-direction: column !important;
-        align-items: center !important;
-        justify-content: center !important;
-        height: auto !important;
-        width: 100% !important;
-        margin: 0 !important;
-        padding: 0 !important;
-        transform: none !important;
-    }
-    
-    body.nav-open {
-        /* Prevent scrolling without moving viewport */
-        overflow: hidden !important;
-        touch-action: none !important;
-        position: relative !important;
-    }
+/* Simplified CSS - JavaScript handles exact positioning */
+body.nav-open {
+    overflow: hidden !important;
+    touch-action: none;
 }
 
 .nav--mobile .nav__list {
+    /* Simple centering - container size set by JavaScript */
+    display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
@@ -338,9 +298,9 @@ body.nav-open {
     gap: var(--space-lg);
     list-style: none;
     margin: 0;
-    padding: 0;
-    height: 100vh;
+    padding: var(--space-lg);
     width: 100%;
+    height: 100%;
 }
 
 .nav--mobile .nav__link {
