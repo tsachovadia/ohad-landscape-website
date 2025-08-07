@@ -27,23 +27,22 @@
             mobileNav.classList.remove('is-open');
             document.body.classList.remove('nav-open');
             
-            // Restore scroll position on iOS
+            // Re-enable scrolling by removing styles
+            document.body.style.overflow = '';
             document.body.style.position = '';
             document.body.style.top = '';
-            window.scrollTo(0, scrollPosition);
+            document.body.style.width = '';
         }
         
         function openMobileMenu() {
-            // Store current scroll position
-            scrollPosition = window.pageYOffset || document.documentElement.scrollTop;
-            
             menuToggle.setAttribute('aria-expanded', 'true');
             mobileNav.classList.add('is-open');
             document.body.classList.add('nav-open');
             
-            // Fix position for iOS
-            document.body.style.position = 'fixed';
-            document.body.style.top = `-${scrollPosition}px`;
+            // Prevent scrolling WITHOUT moving the viewport
+            document.body.style.overflow = 'hidden';
+            document.body.style.position = 'relative';
+            document.body.style.width = '100%';
         }
         
         menuToggle.addEventListener('click', function() {
